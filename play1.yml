@@ -1,0 +1,29 @@
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  ignore_errors: true
+  vars:
+    user_name: mao2029
+    group_name: devops
+  vars_files:
+    - variables.yml
+  tasks:
+    - name: check the time
+      command: datejfkkguy
+#      when: ansible_distribution == "mao" or ansible_processor_nproc == 2
+
+    - name: create user mao
+      user:
+        name: "{{ user_name }}"
+        comment: Mao Admin
+
+    - name: create group
+      group:
+        name: "{{ group_name }}"
+        state: present
+
+    - name: install package
+      package:
+        name: "{{ pkg_name }}"
+        state: present

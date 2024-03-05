@@ -1,0 +1,8 @@
+---
+# tasks file for system
+- name: Update the system
+  yum:
+        name: '*'
+        state: latest
+  tags:
+        - update
